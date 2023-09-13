@@ -26,13 +26,33 @@ mainForm.addEventListener('submit', function (e) {
   // questi sono gli elementi HTML del form, gli input (o le textarea)
   // il CONTENUTO del campo di testo si legge tramite la sua proprietà "value"
 
-  console.log(
-    nameInputField.value,
-    ageInputField.value,
-    cityInputField.value,
-    bioInputField.value
-  ) // stringa
+  console.log(nameInputField.value) // stringa
   console.log(ageInputField.value) // stringa
   console.log(cityInputField.value) // stringa
   console.log(bioInputField.value) // stringa
+
+  const data = {
+    name: nameInputField.value,
+    age: ageInputField.value,
+    city: cityInputField.value,
+    bio: bioInputField.value,
+  }
+
+  console.log('dati raccolti dal form: ', data)
+
+  // adesso che abbiamo raccolto i dati, informiamo l'utente!
+  alert('Grazie! Dati inviati')
+
+  // per azzerare i campi, utilizza sempre la proprietà "value", ma questa volta sovrascrivendo il valore corrente!
+  nameInputField.value = ''
+  ageInputField.value = ''
+  cityInputField.value = ''
+  bioInputField.value = ''
+
+  const newH3 = document.createElement('h3')
+  newH3.innerText = `Grazie, ${data.name}! I tuoi dati sono stati registrati.`
+  // newH3.innerText = 'Grazie, ' + data.name + '! I tuoi dati sono stati registrati.'
+
+  const main = document.getElementsByTagName('main')[0]
+  main.appendChild(newH3)
 })
